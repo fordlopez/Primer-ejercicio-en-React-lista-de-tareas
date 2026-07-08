@@ -1,0 +1,33 @@
+.todo-button{
+
+    position:absolute;
+    right:25px;
+    bottom:25px;
+
+    width:65px;
+    height:65px;
+
+    border:none;
+    border-radius:50%;
+
+    background:#2563eb;
+
+    color:white;
+
+    font-size:35px;
+
+    cursor:pointer;
+
+    transition:.3s;
+
+    box-shadow:0 10px 25px rgba(37,99,235,.4);
+
+}
+
+.todo-button:hover{
+
+    transform:scale(1.1) rotate(90deg);
+
+    background:#1d4ed8;
+
+}
