@@ -1,6 +1,15 @@
-.todo-list{
-    list-style:none;
-    display:flex;
-    flex-direction:column;
-    gap:15px;
+.todo-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.todo-empty{
+    color:#64748b;
+    font-size:16px;
+    text-align:center;
+    padding:18px;
+    background:#f8fafc;
+    border-radius:12px;
 }

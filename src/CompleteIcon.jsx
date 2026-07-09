@@ -1,10 +1,11 @@
 
 import { TodoIcon } from "./TodoIcon"
-function CompleteIcon (){
-return (
-    <TodoIcon type="ckeck"
-    color="green"/>
-)
+function CompleteIcon({ className, onClick }) {
+    return (
+        <TodoIcon type="check"
+            className={className}
+            onClick={onClick} />
+    )
 
 }
-export {CompleteIcon}
+export { CompleteIcon }

@@ -1,26 +1,22 @@
- import "./TodoItem.css"  
-import  {CompleteIcon} from"./CompleteIcon"
-import  {Deletelcon} from "./Deletelcon"
+import "./TodoItem.css"
+import { CompleteIcon } from "./CompleteIcon"
+import { Deletelcon } from "./Deletelcon"
 
 
-function TodoItem(prons){
+function TodoItem({ texto, completed, onComplete, onDelete }) {
 
-    return(
+    return (
 
         <li className="todo-item">
-            <CompleteIcon  className='icon-check' onClick={ prons.onComplete}/>
-            
+            <CompleteIcon className={`icon-check ${completed ? 'icon-check-active' : ''}`} onClick={onComplete} />
 
-            <p>{prons.texto}</p>
+            <p className={completed ? 'todo-item-completed' : ''}>{texto}</p>
 
-   
-            <Deletelcon  className="icon-delete" onClick={
-                prons.onDilit
-            }/>
+            <Deletelcon className="icon-delete" onClick={onDelete} />
 
         </li>
 
     )
 
 }
-export {TodoItem}
+export { TodoItem }

@@ -16,38 +16,41 @@ const defaultTodos = [
 ]
 
 function App() {
-  
+
   const [todos, setTodos] = React.useState(defaultTodos)
-  const [searchValue, setSearchValue] = React.
-    useState('');
+  const [searchValue, setSearchValue] = React.useState('')
 
   const completados = todos.filter(todo => !!todo.completed).length
-  const totalTodos = todos.length;
-  console.log('los usuaro   ' + searchValue)
+  const totalTodos = todos.length
 
-  const searchedTodos = todos.filter((todos) => {
-
-    return todos.texto.toLowerCase().includes(searchValue.toLocaleLowerCase())
+  const searchedTodos = todos.filter((todo) => {
+    return todo.texto.toLowerCase().includes(searchValue.toLowerCase())
   })
+  const noHayTodos = todos.length === 0
+  const noHayResultados = searchedTodos.length === 0 && !noHayTodos
 
   const completeTodo = (texto) => {
     const newTodos = [...todos]
     const todoIndex = newTodos.findIndex(
-      (todo) => todo.texto == texto)
+      (todo) => todo.texto === texto)
 
-    newTodos[todoIndex].completed = true
+    if (todoIndex === -1) return
+
+    newTodos[todoIndex].completed = !newTodos[todoIndex].completed
     setTodos(newTodos)
 
 
   }
 
 
-  const TodoDilit = (texto) => {
+  const deleteTodo = (texto) => {
     const newTodos = [...todos]
     const todoIndex = newTodos.findIndex(
-      (todo) => todo.texto == texto)
+      (todo) => todo.texto === texto)
 
-    newTodos.splice(todoIndex,1)
+    if (todoIndex === -1) return
+
+    newTodos.splice(todoIndex, 1)
     setTodos(newTodos)
 
   }
@@ -60,7 +63,7 @@ function App() {
 
 
     <React.Fragment>
-      <div className='center'>
+      <div className='center' translate='no'>
 
         <TodoCounter completed={completados} total={totalTodos} />
 
@@ -69,10 +72,12 @@ function App() {
         />
 
         <TodoList>
+
+
           {searchedTodos.map(todo => (
             <TodoItem key={todo.texto} texto={todo.texto} completed={todo.completed}
               onComplete={() => completeTodo(todo.texto)}
-              onDilit={() => TodoDilit(todo.texto)}
+              onDelete={() => deleteTodo(todo.texto)}
             />
           ))}
         </TodoList>

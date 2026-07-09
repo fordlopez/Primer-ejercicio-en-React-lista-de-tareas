@@ -1,14 +1,14 @@
 import "./TodoButton.css";
 
-function TodoButton(){
+function TodoButton() {
 
-    return(
-        
+    return (
+
         <button className="todo-button"
-        onClick={(event)=>{
-             console.log('te diste clik')
-             console.log(event)
-        }}>
+            onClick={(event) => {
+                console.log('te diste clik')
+                console.log(event)
+            }}>
             +
         </button>
 
@@ -17,4 +17,4 @@ function TodoButton(){
 
 }
 
-export {TodoButton}
+export { TodoButton }

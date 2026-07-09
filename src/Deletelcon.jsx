@@ -1,9 +1,10 @@
 
 import { TodoIcon } from "./TodoIcon"
-function Deletelcon (){
-return (  <TodoIcon type="delete"
-    color="red"/>
+function Deletelcon({ className, onClick }) {
+    return (<TodoIcon type="delete"
+        className={className}
+        onClick={onClick} />
 
-)
+    )
 }
-export {Deletelcon}
+export { Deletelcon }

@@ -22,13 +22,37 @@
 }
 
 .icon-check{
-    color:#22c55e;
-    font-size:22px;
+    color:#94a3b8;
     cursor:pointer;
+}
+
+.icon-check-active{
+    color:#22c55e;
+}
+
+.todo-item-completed{
+    text-decoration:line-through;
+    color:#94a3b8;
 }
 
 .icon-delete{
     color:#ef4444;
-    font-size:22px;
     cursor:pointer;
+}
+
+.icon-check,
+.icon-delete{
+    width:24px;
+    height:24px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    flex-shrink:0;
+}
+
+.icon-check svg,
+.icon-delete svg{
+    width:18px;
+    height:18px;
+    fill:currentColor;
 }

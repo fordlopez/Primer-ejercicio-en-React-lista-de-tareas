@@ -1,20 +1,17 @@
+import CheckSVG from './check.svg?react';
+import DeleteSVG from './delete.svg?react';
 
-import CheckSVG from './check.svg?react'
+const iconTypes = {
+    check: <CheckSVG />,
+    delete: <DeleteSVG />,
+};
 
-import DeleteSVG from'./delete.svg?react'
-
-const iconTypes={
-    'Check':<CheckSVG/>,
-    'Delete':<DeleteSVG/> }
-
-    
-function TodoIcon({type}){
+function TodoIcon({ type, className, onClick }) {
     return (
-        <span 
-         className={`${type}`}>
-             
-             {type=="check"? <CheckSVG/>:<DeleteSVG/> }
+        <span className={`${type} ${className || ''}`} onClick={onClick}>
+            {iconTypes[type]}
         </span>
-    )
+    );
 }
-export {TodoIcon}
+
+export { TodoIcon };
