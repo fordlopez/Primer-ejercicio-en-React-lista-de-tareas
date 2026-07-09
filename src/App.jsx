@@ -1,23 +1,28 @@
 import React from 'react'
 
 import './app1.css'
-import { TodoItem } from './TodoItem'
-import { TodoCounter } from './TodoCounter'
-import { TodoSearch } from './TodoSearch'
-import { TodoList } from './TodoList'
-import { TodoButton } from './TodoButton'
+import { TodoItem } from './TodoItem/TodoItem'
+import { TodoCounter } from './TodoCounter/TodoCounter'
+import { TodoSearch } from './TodoSearch/TodoSearch'
+import { TodoList } from './TodoList/CompleteIcon/TodoList/TodoList'
+import { TodoButton } from './TodoButton/TodoButton'
+import { useLocalStorage } from './localStorage/localStorageItem.jsx' 
 
-
+/* 
 const defaultTodos = [
   { texto: 'cortar Cebolla', completed: false },
-  { texto: 'Pasar el curso', completed: false },
+  { texto: 'Pasar el curso', completed: true },
   { texto: 'Llorrar con la llorona', completed: false },
-  { texto: 'Limpiar', completed: false }
+  { texto: 'Limpiar', completed: false } 
 ]
+ localStorage.setItem('Todos.v1',JSON.stringify (defaultTodos)) 
+
+ localStorage.removeItem('ToDos-2')  */
+
 
 function App() {
 
-  const [todos, setTodos] = React.useState(defaultTodos)
+  const [todos, saveTodos] = useLocalStorage('Todos.v1', [])
   const [searchValue, setSearchValue] = React.useState('')
 
   const completados = todos.filter(todo => !!todo.completed).length
@@ -26,8 +31,6 @@ function App() {
   const searchedTodos = todos.filter((todo) => {
     return todo.texto.toLowerCase().includes(searchValue.toLowerCase())
   })
-  const noHayTodos = todos.length === 0
-  const noHayResultados = searchedTodos.length === 0 && !noHayTodos
 
   const completeTodo = (texto) => {
     const newTodos = [...todos]
@@ -37,11 +40,8 @@ function App() {
     if (todoIndex === -1) return
 
     newTodos[todoIndex].completed = !newTodos[todoIndex].completed
-    setTodos(newTodos)
-
-
+    saveTodos(newTodos)
   }
-
 
   const deleteTodo = (texto) => {
     const newTodos = [...todos]
@@ -51,17 +51,10 @@ function App() {
     if (todoIndex === -1) return
 
     newTodos.splice(todoIndex, 1)
-    setTodos(newTodos)
-
+    saveTodos(newTodos)
   }
 
-
-
-
-
   return (
-
-
     <React.Fragment>
       <div className='center' translate='no'>
 
@@ -73,7 +66,6 @@ function App() {
 
         <TodoList>
 
-
           {searchedTodos.map(todo => (
             <TodoItem key={todo.texto} texto={todo.texto} completed={todo.completed}
               onComplete={() => completeTodo(todo.texto)}
@@ -81,7 +73,6 @@ function App() {
             />
           ))}
         </TodoList>
-
 
         <TodoButton />
 

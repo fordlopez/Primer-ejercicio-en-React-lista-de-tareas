@@ -26,19 +26,19 @@
     cursor:pointer;
 }
 
-.icon-check-active{
-    color:#22c55e;
-}
+
 
 .todo-item-completed{
     text-decoration:line-through;
     color:#94a3b8;
 }
 
-.icon-delete{
-    color:#ef4444;
-    cursor:pointer;
+
+
+.delete:hover{
+fill: #ef4444;
 }
+
 
 .icon-check,
 .icon-delete{
