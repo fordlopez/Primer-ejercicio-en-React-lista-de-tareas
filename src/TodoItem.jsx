@@ -13,8 +13,11 @@ function TodoItem({ texto, completed, onComplete, onDelete }) {
             <p className={completed ? 'todo-item-completed' : ''}>{texto}</p>
 
             <Deletelcon className="icon-delete" onClick={onDelete} />
-
+            <button>  el pepe</button>
         </li>
+
+
+
 
     )
 

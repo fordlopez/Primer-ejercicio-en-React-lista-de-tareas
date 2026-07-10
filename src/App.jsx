@@ -26,8 +26,6 @@ function App() {
   const searchedTodos = todos.filter((todo) => {
     return todo.texto.toLowerCase().includes(searchValue.toLowerCase())
   })
-  const noHayTodos = todos.length === 0
-  const noHayResultados = searchedTodos.length === 0 && !noHayTodos
 
   const completeTodo = (texto) => {
     const newTodos = [...todos]
