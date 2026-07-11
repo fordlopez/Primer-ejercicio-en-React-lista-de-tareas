@@ -1,6 +1,3 @@
-import React from 'react'
-
-import { useLocalStorage } from './localStorage/localStorageItem.jsx'
 import { AppUi } from './A/AppUi.jsx'
 import { TodoProvider } from './assets/TodoContext/TodoContext.jsx'
 

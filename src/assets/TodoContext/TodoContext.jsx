@@ -2,9 +2,10 @@ import React from "react"
 import { useLocalStorage } from "../../localStorage/localStorageItem.jsx"
 
 const TodoContext = React.createContext()
+const defaultTodos = []
 
 function TodoProvider({ children }) {
-  const { item: todos, saveItem: saveTodos, loading, error } = useLocalStorage('Todos.v1', [])
+  const { item: todos, saveItem: saveTodos, loading, error } = useLocalStorage('Todos.v1', defaultTodos)
   const [searchValue, setSearchValue] = React.useState('')
 
   const completados = todos.filter((todo) => !!todo.completed).length
