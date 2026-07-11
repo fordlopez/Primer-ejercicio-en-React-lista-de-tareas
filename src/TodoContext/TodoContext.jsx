@@ -12,6 +12,7 @@ function TodoProvider({ children }) {
   const completados = todos.filter((todo) => !!todo.completed).length
   const totalTodos = todos.length
 
+
   const searchedTodos = todos.filter((todo) =>
     todo.texto.toLowerCase().includes(searchValue.toLowerCase())
   )
@@ -27,6 +28,23 @@ function TodoProvider({ children }) {
   const addTodo = (texto) => {
     const trimmedText = texto.trim()
     if (!trimmedText) return
+ 
+
+/*   const addTodo = (texto) => {
+    const trimmedText = texto.trim()
+    if (!trimmedText) return
+ */
+
+
+/*       const addTodo =(texto)=>{
+    const newTodos = [...todos]
+newTodos.push({texto,completed:false})
+
+    saveTodos(newTodos)
+  } */
+
+
+
 
     const newTodo = {
       texto: trimmedText,

@@ -4,6 +4,7 @@ import './TodoForm.css'
 import { TodoContext } from '../TodoContext/TodoContext'
 
 function TodoForm() {
+
   const { setOpenModal, addTodo } = React.useContext(TodoContext)
   const [newTodoValue, setNewTodoValue] = React.useState('')
 
@@ -11,6 +12,17 @@ function TodoForm() {
     if (!newTodoValue.trim()) return
     addTodo(newTodoValue)
     setOpenModal(false)
+
+/* const concaode=()=>{
+  event.preventDefault();
+  setOpenMadae(false)}
+ */
+
+/*  const onChange =(event)=>{
+    setNewTodoValue(event.target.value)
+  }
+ */
+  
   }
 
   return (
