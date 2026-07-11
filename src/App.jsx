@@ -1,5 +1,5 @@
 import { AppUi } from './A/AppUi.jsx'
-import { TodoProvider } from './assets/TodoContext/TodoContext.jsx'
+import { TodoProvider } from './TodoContext/TodoContext.jsx'
 
 import './app1.css'
 

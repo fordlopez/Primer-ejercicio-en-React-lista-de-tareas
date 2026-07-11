@@ -1,3 +1,5 @@
+import React from 'react'
+
 import { TodoItem } from '../TodoItem/TodoItem'
 import { TodoCounter } from '../TodoCounter/TodoCounter'
 import { TodoSearch } from '../TodoSearch/TodoSearch'
@@ -6,14 +8,19 @@ import { TodoButton } from '../TodoButton/TodoButton'
 import { EMptyTodo } from '../EMptyTodo/EMptyTodo'
 import { ErrorTodo } from '../ErrorTodo/ErrorTodo'
 import { LoadingTodo } from '../TodoLong/TodoLong'
-import { TodoContext } from '../assets/TodoContext/TodoContext'
+import { TodoContext } from '../TodoContext/TodoContext'
+import { Modal } from '../Modal/Modal'
+import { TodoForm } from '../TodoForm/TodoForm'
 
 function AppUi() {
+  const { openModal } = React.useContext(TodoContext)
+
   return (
     <div>
-
       <TodoContext.Consumer>
         {({
+          loading,
+          error,
           completados,
           totalTodos,
           searchValue,
@@ -21,8 +28,6 @@ function AppUi() {
           searchedTodos,
           completeTodo,
           deleteTodo,
-          loading,
-          error
         }) => (
           <>
             <TodoCounter completed={completados} total={totalTodos} />
@@ -31,16 +36,17 @@ function AppUi() {
               setSearchValue={setSearchValue}
             />
             <TodoList>
-              {loading &&
+              {loading && (
                 <>
-                  <li> <p>Cargando...</p> </li>
+                  <li><p>Cargando...</p></li>
                   <LoadingTodo />
                   <LoadingTodo />
                   <LoadingTodo />
-                </>}
+                </>
+              )}
               {error && <ErrorTodo />}
-              {(!loading && searchedTodos.length === 0) && <EMptyTodo />}
-              {searchedTodos.map(todo => (
+              {!loading && searchedTodos.length === 0 && <EMptyTodo />}
+              {searchedTodos.map((todo) => (
                 <TodoItem
                   key={todo.texto}
                   texto={todo.texto}
@@ -53,7 +59,14 @@ function AppUi() {
           </>
         )}
       </TodoContext.Consumer>
+
       <TodoButton />
+
+      {openModal && (
+        <Modal>
+          <TodoForm />
+        </Modal>
+      )}
     </div>
   )
 }

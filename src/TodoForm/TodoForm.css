@@ -1,0 +1,53 @@
+.TodoForm {
+  background: white;
+  width: 90%;
+  max-width: 400px;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.TodoForm h2 {
+  margin-top: 0;
+  text-align: center;
+}
+
+.TodoForm-textarea {
+  width: 100%;
+  min-height: 120px;
+  resize: none;
+  border: 2px solid #dcdcdc;
+  border-radius: 8px;
+  padding: 12px;
+  font-size: 16px;
+  outline: none;
+  box-sizing: border-box;
+}
+
+.TodoForm-textarea:focus {
+  border-color: #61dafb;
+}
+
+.TodoForm-buttons {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  margin-top: 20px;
+}
+
+.TodoForm-button {
+  border: none;
+  padding: 12px 20px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 15px;
+}
+
+.TodoForm-button-cancel {
+  background: #e5e5e5;
+}
+
+.TodoForm-button-save {
+  background: #61dafb;
+  color: white;
+}

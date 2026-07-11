@@ -1,5 +1,5 @@
 import React from "react"
-import { useLocalStorage } from "../../localStorage/localStorageItem.jsx"
+import { useLocalStorage } from "../localStorage/localStorageItem.jsx"
 
 const TodoContext = React.createContext()
 const defaultTodos = []
@@ -7,6 +7,7 @@ const defaultTodos = []
 function TodoProvider({ children }) {
   const { item: todos, saveItem: saveTodos, loading, error } = useLocalStorage('Todos.v1', defaultTodos)
   const [searchValue, setSearchValue] = React.useState('')
+  const [openModal, setOpenModal] = React.useState(false)
 
   const completados = todos.filter((todo) => !!todo.completed).length
   const totalTodos = todos.length
@@ -21,6 +22,18 @@ function TodoProvider({ children }) {
     if (todoIndex === -1) return
     newTodos[todoIndex].completed = !newTodos[todoIndex].completed
     saveTodos(newTodos)
+  }
+
+  const addTodo = (texto) => {
+    const trimmedText = texto.trim()
+    if (!trimmedText) return
+
+    const newTodo = {
+      texto: trimmedText,
+      completed: false,
+    }
+
+    saveTodos([...todos, newTodo])
   }
 
   const deleteTodo = (texto) => {
@@ -42,7 +55,10 @@ function TodoProvider({ children }) {
         setSearchValue,
         searchedTodos,
         completeTodo,
+        addTodo,
         deleteTodo,
+        openModal,
+        setOpenModal,
       }}
     >
       {children}
