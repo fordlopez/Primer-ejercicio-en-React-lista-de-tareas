@@ -1,0 +1,58 @@
+.LoadingTodo-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+  margin-top: 24px;
+  padding: 20px;
+  background: white;
+  box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+  min-height: 70px;
+}
+
+.LoadingTodo-text {
+  width: calc(100% - 120px);
+  height: 20px;
+  margin-left: 60px;
+  border-radius: 4px;
+}
+
+.LoadingTodo-completeIcon,
+.LoadingTodo-deleteIcon {
+  position: absolute;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+}
+
+.LoadingTodo-completeIcon {
+  left: 16px;
+}
+
+.LoadingTodo-deleteIcon {
+  right: 16px;
+}
+
+/* Animación Skeleton */
+.LoadingTodo-text,
+.LoadingTodo-completeIcon,
+.LoadingTodo-deleteIcon {
+  background: linear-gradient(
+    90deg,
+    #e0e0e0 25%,
+    #f5f5f5 50%,
+    #e0e0e0 75%
+  );
+  background-size: 400% 100%;
+  animation: loadingAnimation 1.5s ease-in-out infinite;
+}
+
+@keyframes loadingAnimation {
+  0% {
+    background-position: 100% 0;
+  }
+
+  100% {
+    background-position: -100% 0;
+  }
+}
